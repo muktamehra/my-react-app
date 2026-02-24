@@ -1,6 +1,7 @@
 import Header from './Header'
 import Hero from './Hero'
 import ProductCard from './ProductCard'
+import Footer from './Footer'
 import './Hero.css'
 import './ProductCard.css'
 
@@ -28,6 +29,7 @@ function App() { // ← this is a React component
           )
         })}
       </div>
+      <Footer />
     </div>
   )
 }
