@@ -12,6 +12,7 @@ function App() { // ← this is a React component
   const [cartTotal, setCartTotal] = useState(0)
   const [filter, setFilter] = useState('all')
   const [sort, setSort] = useState('default')
+  const [cartOpen, setCartOpen] = useState(false)
   const products = [
     {id: 1, name: "Winter Coat", price: 30, image: "images/jacket.jpg", description: " A great all year round jacket"},
     {id: 2, name: "Summer Dress", price: 60, image: "images/dress.jpg", description: " A beautiful red dress"},
@@ -61,7 +62,13 @@ function App() { // ← this is a React component
 
   return (     //← everything inside here shows on the page
     <div>
-      <Header cartTotal={cartTotal} total={total} />
+      <Header 
+      cartTotal={cartTotal} 
+      total={total} 
+      cart = {cart}
+      cartOpen = {cartOpen}
+      setCartOpen = {setCartOpen}
+      />
       <Hero />
       <div className='filters'>
         <button 
@@ -80,10 +87,10 @@ function App() { // ← this is a React component
         className={sort === 'default' ? 'active' : ''} 
         onClick={() => setSort('default')}>Default</button>
         <button 
-        className={filter === 'low' ? 'active' : ''} 
+        className={sort === 'low' ? 'active' : ''} 
         onClick={() => setSort('low')}>Price Low to High</button>
         <button 
-        className={filter === 'high' ? 'active' : ''} 
+        className={sort === 'high' ? 'active' : ''} 
         onClick={() => setSort('high')}>Price High to Low</button>
       </div>
       <div className="cards">
