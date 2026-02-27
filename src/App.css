@@ -40,3 +40,14 @@
   background-color: #333333;
   color: #ffffff;
 }
+
+.filters button.active {
+  background-color: #F5E642;
+  color: #333333;
+}
+
+.sort button.active {
+  background-color: #333333;
+  color: #ffffff;
+  border: 1px solid #333333;
+}

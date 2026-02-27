@@ -64,15 +64,27 @@ function App() { // ← this is a React component
       <Header cartTotal={cartTotal} total={total} />
       <Hero />
       <div className='filters'>
-        <button onClick={() => setFilter('all')}>All</button>
-        <button onClick={() => setFilter('under50')}>Under $50</button>
-        <button onClick={() => setFilter('over50')}>Over $50</button>
+        <button 
+        className={filter === 'all' ? 'active' : ''}
+        onClick={() => setFilter('all')}>All</button>
+        <button 
+        className={filter === 'under50' ? 'active' : ''}
+        onClick={() => setFilter('under50')}>Under $50</button>
+        <button 
+        className={filter === 'over50' ? 'active' : ''}
+        onClick={() => setFilter('over50')}>Over $50</button>
       </div>
 
       <div className='sort'>
-        <button onClick={() => setSort('default')}>Default</button>
-        <button onClick={() => setSort('low')}>Price Low to High</button>
-        <button onClick={() => setSort('high')}>Price High to Low</button>
+        <button 
+        className={sort === 'default' ? 'active' : ''} 
+        onClick={() => setSort('default')}>Default</button>
+        <button 
+        className={filter === 'low' ? 'active' : ''} 
+        onClick={() => setSort('low')}>Price Low to High</button>
+        <button 
+        className={filter === 'high' ? 'active' : ''} 
+        onClick={() => setSort('high')}>Price High to Low</button>
       </div>
       <div className="cards">
         {sortedProducts.map(function(product) {
