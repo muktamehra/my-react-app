@@ -1,7 +1,7 @@
 import './Header.css'
 import { useEffect, useRef } from 'react'
 
-function Header({ cartTotal, total, cart, cartOpen, setCartOpen, search, setSearch, removeFromCart }) {
+function Header({ cartTotal, total, cart, cartOpen, setCartOpen, search, setSearch, removeFromCart, addToCart }) {
   const cartRef = useRef(null)
 
   useEffect(() => {
@@ -47,12 +47,17 @@ function Header({ cartTotal, total, cart, cartOpen, setCartOpen, search, setSear
                 ) : (
                     cart.map(function(item, index) {
                         return (
-                            <div key={index} className='cart-item'>
-                                <span>{item.name}</span>
-                                <span>{item.quantity}</span>
-                                <span>{item.price * item.quantity}</span>
-                                <button onClick={() => removeFromCart(item.name)}>❌</button>
-                            </div>
+                         <div key={index} className='cart-item'>
+  <span>{item.name}</span>
+  <div className='cart-item-controls'>
+    <button onClick={() => removeFromCart(item.name)}>
+        <i className="fas fa-minus"></i></button>
+    <span>{item.quantity}</span>
+    <button onClick={() => addToCart(item.name, item.price)}>
+        <i className="fas fa-plus"></i></button>
+  </div>
+  <span>${item.price * item.quantity}</span>
+</div>
                         )
                     })
                 )}
