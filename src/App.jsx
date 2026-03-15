@@ -9,7 +9,6 @@ import './App.css'
 
 function App() { // ← this is a React component
   const [cart, setCart] = useState([])
-  const [cartTotal, setCartTotal] = useState(0)
   const [filter, setFilter] = useState('all')
   const [sort, setSort] = useState('default')
   const [cartOpen, setCartOpen] = useState(false)
@@ -20,8 +19,7 @@ function App() { // ← this is a React component
     {id: 3, name: "Comfortable Shoes", price: 45, image: "images/shoes.jpg", description: " A pair of comfortable shoes"}
   ]
 
-  function addToCart(name, price) {
-    setCartTotal(cartTotal + 1)
+  function addToCart(name, price) {    
 
     const existingProduct = cart.find(function(item) {
       return item.name === name
@@ -64,6 +62,7 @@ function App() { // ← this is a React component
     return 0
   })
 
+  const cartTotal = cart.reduce((sum, item) => sum + item.quantity, 0)
 
   return (     //← everything inside here shows on the page
     <div>
